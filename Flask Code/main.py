@@ -21,17 +21,13 @@ from keras.regularizers import l2
 import tensorflow as tf
 import os
 import pandas as pd
-
 import pickle
 from flask import Flask, jsonify, request
-import cv2
 from feat import Detector
-import numpy as np
 from werkzeug.utils import secure_filename
 from feat.utils.io import get_test_data_path
 import pickle
 from flask import Flask, jsonify, request
-import numpy as np
 import parselmouth
 from parselmouth.praat import call
 import csv
