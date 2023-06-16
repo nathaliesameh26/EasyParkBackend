@@ -311,7 +311,7 @@ def preprocess_data(data):
 
 if __name__ =="__main__":
     from waitress import serve
-    app.run(port=os.getenv("PORT"),debug=True)
+    serve(port=os.getenv("PORT"),debug=True)
 
 
 # app.run(debug=True,port=8000,host='0.0.0.0')    
