@@ -309,6 +309,11 @@ def preprocess_data(data):
     preprocessed_data = data  # Placeholder, replace with actual preprocessing steps
     return preprocessed_data
 
+
+@app.route('/', methods=['GET'])
+def mainRoute():
+    print("in main route")
+
 if __name__ =="__main__":
     # app.run(debug=True,port=8000,host='0.0.0.0')   
     from waitress import serve
