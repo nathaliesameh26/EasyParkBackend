@@ -45,13 +45,13 @@ import base64
 app = Flask(__name__)
 @app.route('/uploadSpiral', methods=['POST'])
 def uploadSpiral():
-    model_path = 'parkinson_disease_detection1.h5'
+    model_path = 'Flask Code/parkinson_disease_detection1.h5'
     loaded_model = tf.keras.models.load_model(model_path)
     if(request.method=="POST"):
         imagefile= request.files['image']
         filename=werkzeug.utils.secure_filename(imagefile.filename)
-        imagefile.save("uploadedimages/"+filename)
-        input_image = Image.open("uploadedimages/"+filename)
+        imagefile.save("Flask Code/uploadedimages/"+filename)
+        input_image = Image.open("Flask Code/uploadedimages/"+filename)
         labels = ['Healthy', 'Parkinson']
         image_healthy = np.array(input_image)
         image_parkinson = np.array(input_image)
@@ -80,13 +80,13 @@ def uploadSpiral():
 
 @app.route('/uploadWave', methods=['POST'])
 def uploadWave():
-    model_path = 'cnn_wave_model.h5'
+    model_path = 'Flask Code/cnn_wave_model.h5'
     loaded_model = tf.keras.models.load_model(model_path)
     if(request.method=="POST"):
         imagefile= request.files['image']
         filename=werkzeug.utils.secure_filename(imagefile.filename)
-        imagefile.save("./uploadedimages/"+filename)
-        input_image = Image.open("./uploadedimages/"+filename).convert("RGB")
+        imagefile.save("Flask Code/uploadedimages/"+filename)
+        input_image = Image.open("Flask Code/uploadedimages/"+filename).convert("RGB")
 
         labels = ['Healthy', 'Parkinson']
         image_healthy = np.array(input_image)
@@ -310,8 +310,8 @@ def preprocess_data(data):
     return preprocessed_data
 
 if __name__ =="__main__":
+    # app.run(debug=True,port=8000,host='0.0.0.0')   
     from waitress import serve
     serve(app,port=os.getenv("PORT"))
 
 
-# app.run(debug=True,port=8000,host='0.0.0.0')    
